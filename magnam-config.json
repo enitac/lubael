@@ -1,0 +1,56 @@
+{
+  "adminHash": "d6227a60416b85fa442d1a41e5575c06c311840256a2a928762ba1c72eb30382",
+  "products": [
+    {
+      "name": "Samsung Galaxy A54 5G",
+      "price": "MWK 285,000",
+      "description": "6.4\" Super AMOLED, 128GB, 6GB RAM, 5000mAh battery",
+      "image": ""
+    },
+    {
+      "name": "Tecno Spark 20 Pro+",
+      "price": "MWK 165,000",
+      "description": "6.78\" FHD+ Display, 256GB storage, 32MP selfie camera",
+      "image": ""
+    },
+    {
+      "name": "JBL Tune 520BT Headphones",
+      "price": "MWK 45,000",
+      "description": "Bluetooth 5.3, 57 hours playtime, comfortable on-ear design",
+      "image": ""
+    },
+    {
+      "name": "Anker 20000mAh Power Bank",
+      "price": "MWK 38,000",
+      "description": "Fast charging, USB-C, dual USB-A output, LED flashlight",
+      "image": ""
+    },
+    {
+      "name": "Oral-B Pro 3 Electric Toothbrush",
+      "price": "MWK 52,000",
+      "description": "3 cleaning modes, pressure sensor, 2-minute timer, USB charging",
+      "image": ""
+    },
+    {
+      "name": "Xiaomi Redmi Note 13 Pro",
+      "price": "MWK 210,000",
+      "description": "6.67\" AMOLED 120Hz, 200MP camera, 5100mAh, 67W fast charge",
+      "image": ""
+    },
+    {
+      "name": "Logitech MK270 Wireless Keyboard & Mouse",
+      "price": "MWK 32,000",
+      "description": "Compact wireless combo, 2.4GHz USB receiver, long battery life",
+      "image": ""
+    },
+    {
+      "name": "Samsung 32\" Smart TV (HD)",
+      "price": "MWK 195,000",
+      "description": "Crystal UHD, built-in WiFi, Smart Hub, HDR10+",
+      "image": ""
+    }
+  ],
+  "about": {},
+  "contact": {},
+  "logoData": ""
+}
