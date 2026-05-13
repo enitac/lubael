@@ -41,7 +41,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 28px;
-    height: 100px;
+    height: 120px;
     box-shadow: 0 2px 16px rgba(27,44,78,0.07);
   }
 
@@ -62,7 +62,9 @@
   }
 
   #topbar .tb-center img {
-    height: 90px;
+    height: 105px;
+    max-height: 105px;
+    width: auto;
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(232,98,26,0.13));
   }
@@ -76,54 +78,59 @@
   }
 
   .btn-admin {
-    background: var(--navy);
+    background: linear-gradient(135deg, var(--navy) 0%, #263c67 100%);
     color: var(--white);
     border: none;
-    padding: 9px 18px;
-    border-radius: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: background .2s, transform .15s;
+    transition: all .25s;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
+    box-shadow: 0 2px 10px rgba(27,44,78,0.15);
   }
-  .btn-admin:hover { background: var(--orange); transform: translateY(-1px); }
+  .btn-admin:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,44,78,0.25); }
 
   .btn-setup {
-    background: var(--orange);
+    background: linear-gradient(135deg, var(--orange) 0%, #c95214 100%);
     color: var(--white);
     border: none;
-    padding: 9px 18px;
-    border-radius: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 12px;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: all .2s;
+    transition: all .25s;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
+    box-shadow: 0 2px 10px rgba(232,98,26,0.2);
   }
-  .btn-setup:hover { background: #c95214; }
+  .btn-setup:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,98,26,0.35); }
 
   /* ─── HAMBURGER ──────────────────────────────────────────── */
   .hamburger {
-    background: none;
-    border: none;
+    background: var(--light-gray);
+    border: 2px solid var(--mid-gray);
     cursor: pointer;
-    padding: 6px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    border-radius: 10px;
+    transition: all .2s;
   }
+  .hamburger:hover { border-color: var(--orange); background: var(--accent-light); }
   .hamburger span {
     display: block;
-    width: 26px;
+    width: 24px;
     height: 2.5px;
     background: var(--navy);
     border-radius: 2px;
@@ -136,65 +143,102 @@
   /* ─── SIDEBAR ────────────────────────────────────────────── */
   #sidebar {
     position: fixed;
-    top: 100px;
+    top: 120px;
     left: 0;
     bottom: 0;
-    width: 240px;
-    background: var(--white);
+    width: 260px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%);
     border-right: 2px solid var(--mid-gray);
     z-index: 900;
-    padding: 30px 0;
+    padding: 24px 0;
     transform: translateX(-100%);
     transition: transform .3s cubic-bezier(.4,0,.2,1);
-    box-shadow: 4px 0 24px rgba(27,44,78,0.08);
+    box-shadow: 4px 0 30px rgba(27,44,78,0.10);
   }
   #sidebar.open { transform: translateX(0); }
 
-  .sidebar-nav { display: flex; flex-direction: column; gap: 4px; padding: 0 16px; }
+  .sidebar-nav { display: flex; flex-direction: column; gap: 6px; padding: 0 14px; }
 
   .nav-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
-    border-radius: var(--radius);
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 14px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.8px;
     color: var(--dark-gray);
-    transition: all .2s;
+    transition: all .25s cubic-bezier(.4,0,.2,1);
     text-transform: uppercase;
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
   }
-  .nav-item:hover { background: var(--accent-light); color: var(--orange); border-color: var(--orange); }
-  .nav-item.active { background: var(--navy); color: var(--white); }
-  .nav-item .nav-icon { font-size: 18px; width: 22px; text-align: center; }
+  .nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: linear-gradient(90deg, rgba(232,98,26,0.08), transparent);
+    transition: width .3s ease;
+    border-radius: 14px;
+  }
+  .nav-item:hover::before { width: 100%; }
+  .nav-item:hover { color: var(--orange); border-color: rgba(232,98,26,0.35); transform: translateX(4px); }
+  .nav-item.active {
+    background: linear-gradient(135deg, var(--navy) 0%, #263c67 100%);
+    color: var(--white);
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(27,44,78,0.25);
+    transform: translateX(0);
+  }
+  .nav-item.active::before { display: none; }
+  .nav-item.active .nav-icon {
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+  }
+  .nav-item .nav-icon {
+    font-size: 20px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    background: var(--light-gray);
+    transition: all .25s;
+    flex-shrink: 0;
+  }
+  .nav-item:hover .nav-icon { background: var(--accent-light); }
 
   .sidebar-divider {
     height: 1px;
-    background: var(--mid-gray);
-    margin: 16px 16px;
+    background: linear-gradient(90deg, transparent, var(--mid-gray), transparent);
+    margin: 18px 14px;
   }
 
   .sidebar-footer {
     position: absolute;
-    bottom: 24px;
-    left: 16px;
-    right: 16px;
-    padding: 14px;
-    background: var(--accent-light);
-    border-radius: var(--radius);
-    border-left: 3px solid var(--orange);
+    bottom: 20px;
+    left: 14px;
+    right: 14px;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--accent-light) 0%, #fff5ef 100%);
+    border-radius: 14px;
+    border-left: 4px solid var(--orange);
     font-size: 12px;
     color: var(--dark-gray);
     font-family: 'Share Tech Mono', monospace;
+    box-shadow: 0 2px 12px rgba(232,98,26,0.08);
   }
 
   /* ─── MAIN ───────────────────────────────────────────────── */
   #main {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 120px);
     transition: margin-left .3s;
     padding: 0;
   }
@@ -418,7 +462,7 @@
   #page-products {
     padding: 40px;
     background: var(--white);
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 120px);
   }
 
   .products-header {
@@ -554,7 +598,7 @@
   /* ─── ABOUT PAGE ─────────────────────────────────────────── */
   #page-about {
     background: var(--white);
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 120px);
   }
 
   .about-hero {
@@ -618,7 +662,7 @@
   /* ─── CONTACT PAGE ───────────────────────────────────────── */
   #page-contact {
     background: var(--light-gray);
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 120px);
     padding: 48px 40px;
   }
 
@@ -716,10 +760,16 @@
     padding: 36px;
     width: 90%;
     max-width: 480px;
+    max-height: 92vh;
+    overflow-y: auto;
     box-shadow: var(--shadow-strong);
     position: relative;
     animation: slideUp .3s ease;
   }
+  .modal::-webkit-scrollbar { width: 6px; }
+  .modal::-webkit-scrollbar-track { background: transparent; }
+  .modal::-webkit-scrollbar-thumb { background: var(--mid-gray); border-radius: 3px; }
+  .modal::-webkit-scrollbar-thumb:hover { background: var(--dark-gray); }
 
   .modal-large {
     max-width: 760px;
@@ -970,8 +1020,10 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(27,44,78,0.35);
     z-index: 850;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
   .overlay-dim.show { display: block; }
 
@@ -982,6 +1034,132 @@
   }
   .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
   .empty-state p { font-size: 15px; }
+
+  /* ─── IMAGE EDITOR MODAL ─────────────────────────────────── */
+  #modal-image-editor .modal {
+    max-width: 640px;
+    padding: 28px;
+  }
+  .img-editor-canvas-wrap {
+    position: relative;
+    width: 100%;
+    max-height: 380px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    cursor: crosshair;
+  }
+  .img-editor-canvas-wrap canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 380px;
+  }
+  .img-editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .img-editor-toolbar label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .img-editor-toolbar select,
+  .img-editor-toolbar input[type="number"] {
+    padding: 7px 10px;
+    border: 2px solid var(--mid-gray);
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .img-editor-toolbar select:focus,
+  .img-editor-toolbar input[type="number"]:focus {
+    border-color: var(--orange);
+  }
+  .img-editor-toolbar input[type="range"] {
+    width: 100%;
+    accent-color: var(--orange);
+    margin-top: 2px;
+  }
+  .img-editor-size-presets {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .size-preset-btn {
+    padding: 6px 12px;
+    border: 2px solid var(--mid-gray);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    cursor: pointer;
+    transition: all .2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .size-preset-btn:hover, .size-preset-btn.active {
+    border-color: var(--orange);
+    color: var(--orange);
+    background: var(--accent-light);
+  }
+  .img-editor-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  /* ─── PRODUCT CARD UPLOAD BTN ────────────────────────────── */
+  .product-upload-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 34px;
+    height: 34px;
+    background: rgba(255,255,255,0.92);
+    border: 2px solid var(--mid-gray);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all .2s;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0;
+  }
+  .product-card:hover .product-upload-btn { opacity: 1; }
+  .product-upload-btn:hover { border-color: var(--orange); background: var(--white); transform: scale(1.1); }
+  .product-upload-btn input { display: none; }
+
+  /* ─── ADMIN IMAGE EDIT BTN ───────────────────────────────── */
+  .admin-img-edit-btn {
+    background: var(--accent-light);
+    border: 1px solid rgba(232,98,26,0.3);
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--orange);
+    transition: all .2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .admin-img-edit-btn:hover { background: var(--orange); color: var(--white); }
 
   /* page overlay for sidebar on mobile */
 </style>
@@ -1364,6 +1542,64 @@
   </div>
 </div>
 
+<!-- ─── IMAGE EDITOR MODAL ───────────────────────────────────── -->
+<div class="modal-overlay" id="modal-image-editor">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-image-editor')">✕</button>
+    <h2>✂️ Crop &amp; Resize Image</h2>
+    <p class="modal-sub">Drag on the image to select crop area. Adjust output size below.</p>
+
+    <div class="img-editor-canvas-wrap" id="editor-canvas-wrap">
+      <canvas id="editor-canvas"></canvas>
+    </div>
+
+    <div class="img-editor-toolbar">
+      <div style="flex:1;min-width:140px;">
+        <label>Aspect Ratio</label>
+        <select id="editor-aspect" onchange="editorSetAspect(this.value)" style="width:100%;">
+          <option value="free">Free</option>
+          <option value="1:1">1:1 (Square)</option>
+          <option value="4:3">4:3</option>
+          <option value="16:9">16:9 (Wide)</option>
+          <option value="3:4">3:4 (Portrait)</option>
+          <option value="2:3">2:3</option>
+        </select>
+      </div>
+      <div style="flex:1;min-width:140px;">
+        <label>Resize Width (px)</label>
+        <input type="number" id="editor-resize-w" min="50" max="2000" placeholder="Auto" onchange="editorResizeChanged()">
+      </div>
+      <div style="flex:1;min-width:140px;">
+        <label>Resize Height (px)</label>
+        <input type="number" id="editor-resize-h" min="50" max="2000" placeholder="Auto" onchange="editorResizeChanged()">
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-size:11px;font-weight:600;color:var(--dark-gray);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px;">Quick Size Presets</label>
+      <div class="img-editor-size-presets">
+        <button class="size-preset-btn" onclick="editorApplyPreset(400,400)">400x400</button>
+        <button class="size-preset-btn" onclick="editorApplyPreset(600,600)">600x600</button>
+        <button class="size-preset-btn" onclick="editorApplyPreset(800,600)">800x600</button>
+        <button class="size-preset-btn" onclick="editorApplyPreset(800,800)">800x800</button>
+        <button class="size-preset-btn" onclick="editorApplyPreset(1024,768)">1024x768</button>
+        <button class="size-preset-btn" onclick="editorApplyPreset(0,0)">Original</button>
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-size:11px;font-weight:600;color:var(--dark-gray);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px;">Image Quality</label>
+      <input type="range" id="editor-quality" min="10" max="100" value="85" oninput="document.getElementById('editor-quality-val').textContent=this.value+'%'">
+      <span id="editor-quality-val" style="font-size:12px;color:var(--dark-gray);margin-left:6px;">85%</span>
+    </div>
+
+    <div class="img-editor-actions">
+      <button class="btn-secondary" style="padding:10px 20px;font-size:13px;" onclick="editorReset()">Reset</button>
+      <button class="btn-primary" style="padding:10px 24px;font-size:13px;" onclick="editorApply()">Apply Image</button>
+    </div>
+  </div>
+</div>
+
 <!-- ─── TOAST ─────────────────────────────────────────────────── -->
 <div class="toast" id="toast"></div>
 
@@ -1586,6 +1822,9 @@ function updateProductsGrid() {
     card.innerHTML = `
       <div class="product-img-wrap">
         ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : `<div class="product-img-placeholder">📱<span>No Image</span></div>`}
+        <label class="product-upload-btn" title="Upload or change image">
+          📷<input type="file" accept="image/*" onchange="openImageEditor(event, ${i}, 'product')">
+        </label>
       </div>
       <div class="product-info">
         <div class="product-name">${escHtml(p.name)}</div>
@@ -1674,12 +1913,16 @@ function renderAdminProducts() {
     const item = document.createElement('div');
     item.className = 'admin-product-item';
     item.innerHTML = `
-      <div class="admin-product-thumb">${p.image ? `<img src="${p.image}" alt="${p.name}">` : '📦'}</div>
+      <div class="admin-product-thumb" style="position:relative;cursor:pointer;" onclick="triggerAdminImgEdit(${i})" title="Click to change image">
+        ${p.image ? `<img src="${p.image}" alt="${p.name}">` : '📦'}
+        <input type="file" accept="image/*" id="admin-img-input-${i}" style="display:none;" onchange="openImageEditor(event, ${i}, 'admin')">
+      </div>
       <div class="admin-product-details">
         <strong>${escHtml(p.name)}</strong>
         <span>${escHtml(p.price)} — ${escHtml(p.description || '')}</span>
       </div>
       <div class="admin-product-actions">
+        <button class="admin-img-edit-btn" onclick="triggerAdminImgEdit(${i})">📷 Img</button>
         <button class="btn-icon" onclick="editProduct(${i})" title="Edit">✏️</button>
         <button class="btn-icon danger" onclick="deleteProduct(${i})" title="Delete">🗑</button>
       </div>`;
@@ -1690,15 +1933,7 @@ function renderAdminProducts() {
 function previewNewProduct(event) {
   const file = event.target.files[0];
   if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const prev = document.getElementById('new-img-preview');
-    prev.src = e.target.result;
-    prev.style.display = 'block';
-    document.querySelector('#new-img-area .upload-icon').style.display = 'none';
-    document.querySelector('#new-img-area p').style.display = 'none';
-  };
-  reader.readAsDataURL(file);
+  openImageEditor(event, -1, 'new-product');
 }
 
 async function addProduct() {
@@ -1884,6 +2119,294 @@ function checkStrength(val) {
 function toggleVis(id) {
   const el = document.getElementById(id);
   el.type = el.type === 'password' ? 'text' : 'password';
+}
+
+// ─── IMAGE EDITOR (CROP & RESIZE) ──────────────────────────────
+let imgEditorState = {
+  sourceImg: null,       // original Image object
+  sourceDataUrl: '',     // original data URL
+  productIndex: -1,      // -1 = new product, 0+ = existing product index
+  source: '',            // 'product', 'admin', or 'new-product'
+  crop: { x: 0, y: 0, w: 0, h: 0 },
+  isDragging: false,
+  dragStart: { x: 0, y: 0 },
+  scale: 1,
+  displayW: 0,
+  displayH: 0,
+  aspectRatio: null
+};
+
+function triggerAdminImgEdit(i) {
+  document.getElementById('admin-img-input-' + i).click();
+}
+
+function openImageEditor(event, productIndex, source) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      imgEditorState.sourceImg = img;
+      imgEditorState.sourceDataUrl = e.target.result;
+      imgEditorState.productIndex = productIndex;
+      imgEditorState.source = source;
+      imgEditorState.crop = { x: 0, y: 0, w: img.width, h: img.height };
+      imgEditorState.isDragging = false;
+      imgEditorState.aspectRatio = null;
+
+      // Reset controls
+      document.getElementById('editor-aspect').value = 'free';
+      document.getElementById('editor-resize-w').value = '';
+      document.getElementById('editor-resize-h').value = '';
+      document.getElementById('editor-quality').value = '85';
+      document.getElementById('editor-quality-val').textContent = '85%';
+      document.querySelectorAll('.size-preset-btn').forEach(b => b.classList.remove('active'));
+
+      editorDrawCanvas();
+      openModal('modal-image-editor');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function editorDrawCanvas() {
+  const canvas = document.getElementById('editor-canvas');
+  const ctx = canvas.getContext('2d');
+  const img = imgEditorState.sourceImg;
+  if (!img) return;
+
+  const wrap = document.getElementById('editor-canvas-wrap');
+  const maxW = wrap.clientWidth - 4;
+  const maxH = 380;
+
+  const scale = Math.min(maxW / img.width, maxH / img.height, 1);
+  imgEditorState.scale = scale;
+  imgEditorState.displayW = Math.round(img.width * scale);
+  imgEditorState.displayH = Math.round(img.height * scale);
+
+  canvas.width = imgEditorState.displayW;
+  canvas.height = imgEditorState.displayH;
+
+  // Draw image
+  ctx.drawImage(img, 0, 0, imgEditorState.displayW, imgEditorState.displayH);
+
+  // Draw crop overlay
+  const c = imgEditorState.crop;
+  const cx = c.x * scale, cy = c.y * scale, cw = c.w * scale, ch = c.h * scale;
+
+  // Dim area outside crop
+  ctx.fillStyle = 'rgba(0,0,0,0.5)';
+  ctx.fillRect(0, 0, imgEditorState.displayW, cy);                          // top
+  ctx.fillRect(0, cy + ch, imgEditorState.displayW, imgEditorState.displayH - cy - ch); // bottom
+  ctx.fillRect(0, cy, cx, ch);                                              // left
+  ctx.fillRect(cx + cw, cy, imgEditorState.displayW - cx - cw, ch);        // right
+
+  // Crop border
+  ctx.strokeStyle = '#E8621A';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([6, 3]);
+  ctx.strokeRect(cx, cy, cw, ch);
+  ctx.setLineDash([]);
+
+  // Corner handles
+  const hs = 8;
+  ctx.fillStyle = '#E8621A';
+  const corners = [[cx, cy], [cx + cw, cy], [cx, cy + ch], [cx + cw, cy + ch]];
+  corners.forEach(([hx, hy]) => {
+    ctx.fillRect(hx - hs/2, hy - hs/2, hs, hs);
+  });
+
+  // Grid lines (rule of thirds)
+  ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+  ctx.lineWidth = 1;
+  for (let i = 1; i < 3; i++) {
+    ctx.beginPath(); ctx.moveTo(cx + cw * i / 3, cy); ctx.lineTo(cx + cw * i / 3, cy + ch); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx, cy + ch * i / 3); ctx.lineTo(cx + cw, cy + ch * i / 3); ctx.stroke();
+  }
+}
+
+// Mouse events for crop selection
+(function() {
+  const canvas = document.getElementById('editor-canvas');
+  if (!canvas) return;
+
+  canvas.addEventListener('mousedown', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const s = imgEditorState.scale;
+
+    imgEditorState.isDragging = true;
+    imgEditorState.dragStart = { x: x / s, y: y / s };
+    imgEditorState.crop = { x: imgEditorState.dragStart.x, y: imgEditorState.dragStart.y, w: 0, h: 0 };
+  });
+
+  canvas.addEventListener('mousemove', function(e) {
+    if (!imgEditorState.isDragging) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const s = imgEditorState.scale;
+    const img = imgEditorState.sourceImg;
+
+    let cx = Math.min(imgEditorState.dragStart.x, x / s);
+    let cy = Math.min(imgEditorState.dragStart.y, y / s);
+    let cw = Math.abs(x / s - imgEditorState.dragStart.x);
+    let ch = Math.abs(y / s - imgEditorState.dragStart.y);
+
+    // Clamp to image bounds
+    cx = Math.max(0, cx); cy = Math.max(0, cy);
+    cw = Math.min(img.width - cx, cw); ch = Math.min(img.height - cy, ch);
+
+    // Apply aspect ratio constraint
+    if (imgEditorState.aspectRatio) {
+      ch = cw / imgEditorState.aspectRatio;
+      if (cy + ch > img.height) { ch = img.height - cy; cw = ch * imgEditorState.aspectRatio; }
+    }
+
+    imgEditorState.crop = { x: cx, y: cy, w: cw, h: ch };
+    editorDrawCanvas();
+  });
+
+  canvas.addEventListener('mouseup', function() {
+    imgEditorState.isDragging = false;
+  });
+
+  // Touch events
+  canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    const s = imgEditorState.scale;
+    imgEditorState.isDragging = true;
+    imgEditorState.dragStart = { x: x / s, y: y / s };
+    imgEditorState.crop = { x: imgEditorState.dragStart.x, y: imgEditorState.dragStart.y, w: 0, h: 0 };
+  }, { passive: false });
+
+  canvas.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    if (!imgEditorState.isDragging) return;
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    const s = imgEditorState.scale;
+    const img = imgEditorState.sourceImg;
+    let cx = Math.min(imgEditorState.dragStart.x, x / s);
+    let cy = Math.min(imgEditorState.dragStart.y, y / s);
+    let cw = Math.abs(x / s - imgEditorState.dragStart.x);
+    let ch = Math.abs(y / s - imgEditorState.dragStart.y);
+    cx = Math.max(0, cx); cy = Math.max(0, cy);
+    cw = Math.min(img.width - cx, cw); ch = Math.min(img.height - cy, ch);
+    if (imgEditorState.aspectRatio) {
+      ch = cw / imgEditorState.aspectRatio;
+      if (cy + ch > img.height) { ch = img.height - cy; cw = ch * imgEditorState.aspectRatio; }
+    }
+    imgEditorState.crop = { x: cx, y: cy, w: cw, h: ch };
+    editorDrawCanvas();
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', function() { imgEditorState.isDragging = false; });
+})();
+
+function editorSetAspect(val) {
+  if (val === 'free') { imgEditorState.aspectRatio = null; return; }
+  const [w, h] = val.split(':').map(Number);
+  imgEditorState.aspectRatio = w / h;
+
+  // Recalculate crop to match aspect
+  const img = imgEditorState.sourceImg;
+  const ar = imgEditorState.aspectRatio;
+  let cw = img.width, ch = cw / ar;
+  if (ch > img.height) { ch = img.height; cw = ch * ar; }
+  imgEditorState.crop = { x: (img.width - cw) / 2, y: (img.height - ch) / 2, w: cw, h: ch };
+  editorDrawCanvas();
+}
+
+function editorApplyPreset(w, h) {
+  document.getElementById('editor-resize-w').value = w || '';
+  document.getElementById('editor-resize-h').value = h || '';
+  document.querySelectorAll('.size-preset-btn').forEach(b => b.classList.remove('active'));
+  if (w && h) event.target.classList.add('active');
+}
+
+function editorResizeChanged() {
+  // When user manually types width/height, no auto-calc needed
+}
+
+function editorReset() {
+  const img = imgEditorState.sourceImg;
+  if (!img) return;
+  imgEditorState.crop = { x: 0, y: 0, w: img.width, h: img.height };
+  imgEditorState.aspectRatio = null;
+  document.getElementById('editor-aspect').value = 'free';
+  document.getElementById('editor-resize-w').value = '';
+  document.getElementById('editor-resize-h').value = '';
+  document.querySelectorAll('.size-preset-btn').forEach(b => b.classList.remove('active'));
+  editorDrawCanvas();
+}
+
+function editorApply() {
+  const img = imgEditorState.sourceImg;
+  if (!img) return;
+
+  const c = imgEditorState.crop;
+  if (c.w < 10 || c.h < 10) { toast('Please select a crop area by dragging on the image', 'error'); return; }
+
+  let outW = parseInt(document.getElementById('editor-resize-w').value) || 0;
+  let outH = parseInt(document.getElementById('editor-resize-h').value) || 0;
+
+  // If only one dimension is set, calculate the other maintaining aspect
+  if (outW && !outH) outH = Math.round(outW * (c.h / c.w));
+  if (outH && !outW) outW = Math.round(outH * (c.w / c.h));
+  if (!outW || !outH) { outW = Math.round(c.w); outH = Math.round(c.h); }
+
+  // Cap at 2000px
+  outW = Math.min(2000, Math.max(50, outW));
+  outH = Math.min(2000, Math.max(50, outH));
+
+  // Create output canvas
+  const outCanvas = document.createElement('canvas');
+  outCanvas.width = outW;
+  outCanvas.height = outH;
+  const ctx = outCanvas.getContext('2d');
+
+  // Draw cropped + resized
+  ctx.drawImage(img, c.x, c.y, c.w, c.h, 0, 0, outW, outH);
+
+  const quality = parseInt(document.getElementById('editor-quality').value) / 100;
+  const dataUrl = outCanvas.toDataURL('image/jpeg', quality);
+
+  // Apply based on source
+  const src = imgEditorState.source;
+  const idx = imgEditorState.productIndex;
+
+  if (src === 'new-product') {
+    // Set preview for new product form
+    const prev = document.getElementById('new-img-preview');
+    prev.src = dataUrl;
+    prev.style.display = 'block';
+    document.querySelector('#new-img-area .upload-icon').style.display = 'none';
+    document.querySelector('#new-img-area p').style.display = 'none';
+    prev.dataset.ready = 'true';
+  } else {
+    // Apply to existing product
+    STATE.products[idx].image = dataUrl;
+    updateProductsGrid();
+    renderAdminProducts();
+    autoSave();
+    toast('Product image updated ✅', 'success');
+  }
+
+  closeModal('modal-image-editor');
+
+  // Reset file inputs
+  document.querySelectorAll('input[type="file"]').forEach(inp => { if (inp.closest('#modal-image-editor') || inp.classList.contains('product-upload-btn')) return; inp.value = ''; });
 }
 
 function escHtml(str) {
