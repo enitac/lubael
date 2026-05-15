@@ -52,5 +52,31 @@
   ],
   "about": {},
   "contact": {},
-  "logoData": ""
+  "logoData": "",
+  "features": [
+    {
+      "icon": "✅",
+      "title": "Genuine Products",
+      "description": "Every gadget we sell is authentic and quality-verified before reaching you."
+    },
+    {
+      "icon": "💬",
+      "title": "Easy Ordering",
+      "description": "Simply pick your items and order directly via WhatsApp — fast and convenient."
+    },
+    {
+      "icon": "🚚",
+      "title": "Fast Delivery",
+      "description": "We deliver quickly. Your gadget reaches you without delay."
+    },
+    {
+      "icon": "🔧",
+      "title": "After-Sales Support",
+      "description": "We stand behind what we sell. Our team is always here to help post-purchase."
+    }
+  ],
+  "featuresHeader": {
+    "tag": "Why Choose Us",
+    "title": "Your Trusted Electronics Partner"
+  }
 }
