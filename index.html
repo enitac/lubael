@@ -1681,6 +1681,8 @@ function loadLocalState() {
     if (s) Object.assign(STATE, JSON.parse(s));
     if (STATE.setupDone) showAdminButton();
     if (STATE.logoData) applyLogoData(STATE.logoData);
+    applyAbout();
+    applyContact();
     applyFeatures();
   } catch(e) {}
 }
@@ -1770,6 +1772,7 @@ async function completeSetup() {
       products: STATE.products,
       about: STATE.about,
       contact: STATE.contact,
+      features: STATE.features,
       logoData: STATE.logoData
     };
 
