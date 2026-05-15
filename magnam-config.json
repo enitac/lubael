@@ -52,31 +52,31 @@
   ],
   "about": {},
   "contact": {},
-  "logoData": "",
-  "features": [
-    {
-      "icon": "✅",
-      "title": "Genuine Products",
-      "description": "Every gadget we sell is authentic and quality-verified before reaching you."
-    },
-    {
-      "icon": "💬",
-      "title": "Easy Ordering",
-      "description": "Simply pick your items and order directly via WhatsApp — fast and convenient."
-    },
-    {
-      "icon": "🚚",
-      "title": "Fast Delivery",
-      "description": "We deliver quickly. Your gadget reaches you without delay."
-    },
-    {
-      "icon": "🔧",
-      "title": "After-Sales Support",
-      "description": "We stand behind what we sell. Our team is always here to help post-purchase."
-    }
-  ],
-  "featuresHeader": {
+  "features": {
     "tag": "Why Choose Us",
-    "title": "Your Trusted Electronics Partner"
-  }
+    "title": "Your Trusted Electronics Partner",
+    "cards": [
+      {
+        "icon": "✅",
+        "head": "Genuine Products",
+        "body": "Every gadget we sell is authentic and quality-verified before reaching you."
+      },
+      {
+        "icon": "💬",
+        "head": "Easy Ordering",
+        "body": "Simply pick your items and order directly via WhatsApp — fast and convenient."
+      },
+      {
+        "icon": "🚚",
+        "head": "Fast Delivery",
+        "body": "We deliver across Lilongwe quickly. Your gadget reaches you without delay."
+      },
+      {
+        "icon": "🔧",
+        "head": "After-Sales Support",
+        "body": "We stand behind what we sell. Our team is always here to help post-purchase."
+      }
+    ]
+  },
+  "logoData": ""
 }
